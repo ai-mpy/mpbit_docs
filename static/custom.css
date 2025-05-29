@@ -1,0 +1,13 @@
+.wy-nav-content h1 {
+    font-size: 20px;
+    margin-bottom: 1.2rem;
+}
+.wy-nav-content h2 {
+    font-size: 16px;
+}
+.rst-versions .rst-other-versions,
+.wy-nav-side .rst-versions,
+.wy-nav-content .rst-versions,
+.wy-nav-content .viewcode-link {
+    display: none !important;
+}
