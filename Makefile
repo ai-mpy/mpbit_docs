@@ -6,8 +6,7 @@ PYTHON        = python3
 SPHINXOPTS    = -W --keep-going -j auto
 SPHINXBUILD   = sphinx-build
 PAPER         =
-BUILDDIR      = _build
-DOCSDIR       = docs
+BUILDDIR      = docs/$(MICROPY_PORT)
 CPYDIFFDIR    = ../tools
 CPYDIFF       = gen-cpydiff.py
 GENRSTDIR     = genrst
@@ -57,7 +56,6 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
-	rm -rf $(DOCSDIR)/*
 	rm -f $(GENRSTDIR)/*
 
 cpydiff:
@@ -67,11 +65,8 @@ cpydiff:
 
 html:
 	$(SPHINXBUILD) $(FORCE) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	@echo "Copying files to docs directory..."
-	@mkdir -p $(DOCSDIR)
-	@cp -r $(BUILDDIR)/html/* $(DOCSDIR)/
 	@echo
-	@echo "Build finished. The HTML pages are in $(DOCSDIR)."
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
