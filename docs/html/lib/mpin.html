@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>class MPin -- 引脚扩展 &mdash; LGBIT 1.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8bf06b73" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="class Touch -- 触摸键" href="touch.html" />
+    <link rel="prev" title="API速查" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LGBIT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../blockly/index.html">图形化编程</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API速查</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">class MPin -- 引脚扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="touch.html">class Touch -- 触摸键</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../educore/index.html">人教版范例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LGBIT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API速查</a></li>
+      <li class="breadcrumb-item active">class MPin -- 引脚扩展</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lib/mpin.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="class-mpin">
+<span id="mpbit-mpin"></span><h1>class MPin -- 引脚扩展<a class="headerlink" href="#class-mpin" title="Link to this heading"></a></h1>
+<p>读写数字模拟引脚值,电平变化事件,模拟值改变事件</p>
+<section id="id1">
+<h2>构造函数<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mpbit.MPin">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpbit.</span></span><span class="sig-name descname"><span class="pre">MPin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PinMode.IN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpbit.MPin" title="Link to this definition"></a></dt>
+<dd><p>创建一个引脚对象。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pin</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#int" title="（在 Python v3.5）"><em>int</em></a>) -- 引脚编号</p></li>
+<li><p><strong>mode</strong> (<em>PinMode</em>) -- 引脚模式, 可选值: <code class="docutils literal notranslate"><span class="pre">PinMode.IN</span></code>, <code class="docutils literal notranslate"><span class="pre">PinMode.OUT</span></code>, <code class="docutils literal notranslate"><span class="pre">PinMode.ANALOG</span></code></p></li>
+<li><p><strong>pull</strong> -- 引脚上拉模式, 可选值: <code class="docutils literal notranslate"><span class="pre">Pin.PULL_UP</span></code>, <code class="docutils literal notranslate"><span class="pre">Pin.PULL_DOWN</span></code>, <code class="docutils literal notranslate"><span class="pre">Pin.PULL_NONE</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="mpbit.MPin.read_digital">
+<span class="sig-name descname"><span class="pre">read_digital</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpbit.MPin.read_digital" title="Link to this definition"></a></dt>
+<dd><p>读取引脚的数字电平值。(必须是 <code class="docutils literal notranslate"><span class="pre">PinMode.IN</span></code> 模式)</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>引脚的数字电平值, 0 或 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpbit.MPin.write_digital">
+<span class="sig-name descname"><span class="pre">write_digital</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpbit.MPin.write_digital" title="Link to this definition"></a></dt>
+<dd><p>设置引脚的数字电平值。(必须是 <code class="docutils literal notranslate"><span class="pre">PinMode.OUT</span></code> 模式)</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#int" title="（在 Python v3.5）"><em>int</em></a>) -- 要设置的数字电平值, 0 或 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpbit.MPin.read_analog">
+<span class="sig-name descname"><span class="pre">read_analog</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpbit.MPin.read_analog" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">读取引脚的模拟值。(必须是</span> <span class="pre">``PinMode.ANALOG``</span> <span class="pre">模式)</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>引脚的模拟值, 范围在 0 到 4095 之间</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpbit.MPin.write_analog">
+<span class="sig-name descname"><span class="pre">write_analog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpbit.MPin.write_analog" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">设置引脚的模拟值。(必须是</span> <span class="pre">``PinMode.ANALOG``</span> <span class="pre">模式)</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#int" title="（在 Python v3.5）"><em>int</em></a>) -- 要设置的模拟值, 范围在 0 到 1023 之间</p>
+</dd>
+</dl>
+<p>用例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpbit</span><span class="w"> </span><span class="kn">import</span> <span class="n">MPin</span><span class="p">,</span><span class="n">PinMode</span>
+<span class="c1"># 初始化数字输出引脚</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">MPin</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PinMode</span><span class="o">.</span><span class="n">PWM</span><span class="p">)</span>
+<span class="c1"># 设置模拟值</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">write_analog</span><span class="p">(</span><span class="mi">1023</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpbit.MPin.irq">
+<span class="sig-name descname"><span class="pre">irq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trigger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpbit.MPin.irq" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">设置引脚的中断触发条件和中断处理函数。</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trigger</strong> (<a class="reference external" href="https://docs.python.org/3.5/library/functions.html#int" title="（在 Python v3.5）"><em>int</em></a>) -- 中断触发条件, 可选值: <code class="docutils literal notranslate"><span class="pre">Pin.IRQ_FALLING</span></code>, <code class="docutils literal notranslate"><span class="pre">Pin.IRQ_RISING</span></code>, <code class="docutils literal notranslate"><span class="pre">Pin.IRQ_RISING</span> <span class="pre">|</span> <span class="pre">Pin.IRQ_FALLING</span></code></p></li>
+<li><p><strong>handler</strong> (<em>function</em>) -- 中断处理函数, 接收一个参数, 为触发中断的引脚对象</p></li>
+</ul>
+</dd>
+</dl>
+<p>用例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpbit</span><span class="w"> </span><span class="kn">import</span> <span class="n">MPin</span>
+<span class="c1"># 定义中断处理函数</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_p0_rising</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
+   <span class="k">pass</span>
+<span class="c1"># 创建一个引脚对象</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">MPin</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PinMode</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+<span class="c1"># 设置中断触发条件和中断处理函数</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_RISING</span><span class="p">,</span><span class="n">on_p0_rising</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpbit</span><span class="w"> </span><span class="kn">import</span> <span class="n">MPin</span>
+<span class="c1"># 创建一个引脚对象</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">MPin</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">MPin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+<span class="c1"># 读取引脚的数字电平值</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">p0</span><span class="o">.</span><span class="n">read_digital</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;引脚电平值:&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="API速查" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="touch.html" class="btn btn-neutral float-right" title="class Touch -- 触摸键" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 LGY。
+      <span class="lastupdated">最后更新于 08 6月 2025.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

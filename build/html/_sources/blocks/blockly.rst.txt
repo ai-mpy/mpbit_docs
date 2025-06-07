@@ -1,6 +1,0 @@
-blockly
-=======
-
-.. toctree::
-   :maxdepth: 2
-
