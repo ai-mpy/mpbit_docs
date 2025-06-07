@@ -1,0 +1,43 @@
+#mPythonType:0
+from educore import oled, parrot, light, wifi, mqttclient, SoilHumiditySensor
+
+wifi.connect(ssid='mywifi', psd='123456789', timeout=10000)
+
+mqttclient.connect(server='iot.mpython.cn', port=1883, client_id='04edc14052', user='04edcZGUpB', psd='04edcaQ7w6')
+
+import urequests
+
+import ujson
+
+import time
+city_code = 'CH010100'
+key = '5g8koi0s83vk0ihn'
+_response = urequests.get((''.join([str(x) for x in ['http://api.yytianqi.com/forecast7d?city=', city_code, '&key=', key]])))
+if _response.status_code == 200:
+    data = ujson.loads(_response.text)
+    tq1 = data['data']['list'][0]['tq1']
+    tq2 = data['data']['list'][0]['tq2']
+    tq = [tq1, tq2]
+M1 = parrot(parrot.M1)
+hum_max = 3000
+hum_min = 2000
+while True:
+    hum = SoilHumiditySensor(0).read()
+    lgt = light().read()
+    mqttclient.publish(topic='04edcwHK1N', content={"土壤湿度":hum, "光线":lgt})
+    oled.print('土壤湿度：' + str(hum) + '\n近2日天气：' + str(tq1) + '-' + str(tq2))
+    if hum > hum_max:
+        M1.speed(0)
+    elif hum > hum_min:
+        if '雨' in tq[0] or '雨' in tq[1]:
+            M1.speed(0)
+        else:
+            M1.speed(100)
+            time.sleep(5)
+        if lgt > 1200:
+            hum_min = 2500
+        else:
+            hum_min = 2000
+    else:
+        M1.speed(100)
+        time.sleep(5)

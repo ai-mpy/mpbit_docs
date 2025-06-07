@@ -1,0 +1,17 @@
+#mPythonType:0
+from educore import oled, rfid, button, ultrasonic, wifi, mqttclient
+
+wifi.connect(ssid='mywifi', psd='123456789', timeout=10000)
+
+mqttclient.connect(server='iot.mpython.cn', port=1883, client_id='5b47f14909', user='5b47fkYKD0', psd='5b47f9KEFp')
+scan_rfid = rfid(sda=1, scl=0)
+k = button(button.a)
+sonic = ultrasonic(sda=20,scl=19)
+oled.print('等待扫描...')
+rf = scan_rfid.scanning()
+sn = rf.serial_number()
+while True:
+    v = 100 - sonic.distance()
+    oled.print('奶牛编号: ' + str(sn) + '\n产奶量: ' + str(v))
+    if k.status() == 1:
+        mqttclient.publish(topic='5b47fWllPg', content='奶牛编号: ' + str(sn) + '\\n产奶量: ' + str(v))

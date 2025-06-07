@@ -1,0 +1,39 @@
+信息科技八年级-第一单元-第4课-物物相连有价值
+====================================================
+
+.. figure:: img/u1_l4_1.png
+    :width: 700px
+    :class: block-figure
+
+
+生成代码:
+
+.. code-block:: python
+
+    from educore import SoilHumiditySensor,mqttclient,oled,servo,wifi
+    import ntptime
+    import time
+
+    def receive_a73acJGlOL():
+        if mqttclient.message('a73acJGlOL') == '开窗':
+            servo(13).angle(90)
+        elif mqttclient.message('a73acJGlOL') == '关窗':
+            servo(13).angle(0)
+
+    wifi.connect(ssid='mywifi',psd='123456789',timeout=10000)
+    ntptime.settime(8,"time.windows.com")
+    mqttclient.connect(server='iot.mpython.cn',port=1883,client_id='a73ac43a00',user='a73acey46G',psd='a73aciJ9nw')
+    hum = SoilHumiditySensor(0).read()
+    servo(13).angle(90)
+    mqttclient.received(topic='a73acJGlOL',callback=receive_a73acJGlOL)
+    while True:
+        oled.print(''.join((str(time.localtime()[3]),'点',str(time.localtime()[4]),'分',str(time.localtime()[5]),'秒')))
+        if time.localtime()[3] == 16 and time.localtime()[4] == 30:
+            servo(13).angle(0)
+        time.sleep(1)
+        if hum > 2000:
+            servo(13).angle(0)
+
+
+
+:download:`点击下载-u1l4_学习活动2.mix<mix/u1l4_学习活动2.mix>`

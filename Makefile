@@ -8,15 +8,22 @@ SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
 DOCSDIR       = docs
-SOURCEDIR     = .           # 添加源目录配置
 CPYDIFFDIR    = ../tools
 CPYDIFF       = gen-cpydiff.py
 GENRSTDIR     = genrst
+# Run "make FORCE= ..." to avoid rebuilding from scratch (and risk
+# producing incorrect docs).
+FORCE         = -E
+
+# User-friendly check for sphinx-build
+ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
+$(error The '$(SPHINXBUILD)' command was not found. Make sure you have Sphinx installed, then set the SPHINXBUILD environment variable to point to the full path of the '$(SPHINXBUILD)' executable. Alternatively you can add the directory with the executable to your PATH. If you don't have Sphinx installed, grab it from http://sphinx-doc.org/)
+endif
 
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) $(SOURCEDIR)
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
@@ -59,7 +66,7 @@ cpydiff:
 	cd $(CPYDIFFDIR) && $(PYTHON) $(CPYDIFF)
 
 html:
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	$(SPHINXBUILD) $(FORCE) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo "Copying files to docs directory..."
 	@mkdir -p $(DOCSDIR)
 	@cp -r $(BUILDDIR)/html/* $(DOCSDIR)/

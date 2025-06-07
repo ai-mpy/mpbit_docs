@@ -1,6 +1,7 @@
 docs:
     # 生成文档
     echo "开始生成文档..."
+    make clean && \
     make html && \
     echo "文档生成成功"
 

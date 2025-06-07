@@ -1,0 +1,20 @@
+信息科技八年级-第二单元-第8课-巧用蓝牙做工具
+==========================================================
+
+PYTHON代码:
+
+.. code-block:: python
+
+    from educore import hid, keycode, accelerometer, oled
+
+    ble_hid = hid(name='mpy_hid')
+
+    acc = accelerometer()
+    while True:
+        if ble_hid.isconnected():
+            oled.print('蓝牙设备已连接')
+        if acc.shake():
+            ble_hid.keyboard_send(keycode.SPACE)
+
+
+:download:`点击下载-u2l8_学习活动2.py <py/u2l8_学习活动2.py>`

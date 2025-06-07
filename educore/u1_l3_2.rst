@@ -17,4 +17,4 @@
         oled.print(light_value)
 
 
-:download:`点击下载-拓展与提升.mix <mix/拓展与提升.mix>`
+:download:`点击下载-u1l3_拓展与提升.mix <mix/u1l3_拓展与提升.mix>`

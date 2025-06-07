@@ -1,0 +1,27 @@
+信息科技八年级-第四单元-第17课-物联数据需采集
+=========================================================
+
+PYTHON代码:
+
+.. code-block:: python
+
+    from educore import oled, wifi
+
+    wifi.connect(ssid='mywifi', psd='123456789', timeout=10000)
+
+    import urequests
+
+    import ujson
+    city_code = 'CH010100'
+    key = '5g8koi0s83vk0ihn'
+    _response = urequests.get('http://api.yytianqi.com/forecast7d?city=' + city_code + '&key=' + key)
+    if _response.status_code == 200:
+        data = ujson.loads(_response.text)
+        tq1 = data['data']['list'][0]['tq1']
+        tq2 = data['data']['list'][0]['tq2']
+        tq = tq1 + '-' + tq2
+        oled.print(tq)
+
+
+
+:download:`点击下载-u4l17_学习活动1.py <py/u4l17_学习活动1.py>`

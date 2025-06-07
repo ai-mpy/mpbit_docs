@@ -1,0 +1,13 @@
+信息科技八年级-第六单元-第26课-数字世界有身份
+==========================================================================
+
+PYTHON代码:
+
+.. code-block:: python
+
+    from educore import oled, uuid
+    myid = uuid()
+    oled.print(myid)
+
+
+:download:`点击下载-u6l26_学习活动1.py <py/u6l26_学习活动1.py>`

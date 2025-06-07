@@ -1,0 +1,17 @@
+信息科技八年级-第一单元-第3课-学习活动3
+===========================================
+
+
+
+PYTHON代码:
+
+.. code-block:: python
+
+    from educore import sound, oled
+
+    while True:
+        sound_value = sound().read()
+        oled.print(('声音响度：' + str(sound_value)))
+
+
+:download:`点击下载-u1l3_学习活动3.py <py/u1l3_学习活动3.py>`

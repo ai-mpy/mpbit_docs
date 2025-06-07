@@ -1,0 +1,22 @@
+信息科技八年级-第三单元-第14课-远程控制更便捷
+=========================================================
+
+PYTHON代码:
+
+.. code-block:: python
+
+    from educore import wifi, mqttclient, button
+
+    wifi.connect(ssid='mywifi', psd='123456789', timeout=10000)
+
+    mqttclient.connect(server='iot.mpython.cn', port=1883, client_id='5b47f88377', user='5b47fLPnCo', psd='5b47fPkugf')
+
+    import time
+    btn_a = button(button.a)
+    while True:
+        if btn_a.status() == 1:
+            mqttclient.publish(topic='5b47fDXrEq', content='open')
+            time.sleep(5)
+
+
+:download:`点击下载-u3l14_学习活动2-任务1.py <py/u3l14_学习活动2-任务1.py>`

@@ -35,17 +35,11 @@ rst_epilog = """
 .. include:: /templates/replace.inc
 """
 
-html_theme = 'sphinx_rtd_theme'  # 使用Read the Docs主题
+html_theme = 'sphinx_rtd_theme'
 html_theme_path = ["."]
 html_favicon = "static/favicon.ico"
-html_static_path = ['_static']
-html_css_files = [
-    'css/custom.css',
-]
-
-# 重要：设置正确的基础URL
-html_baseurl = '/mpbit_docs/'
-
+html_static_path = ['static']
+html_css_files = ['custom.css']
 html_last_updated_fmt = "%d %b %Y"
 html_theme_options = {
     'titles_only': True,

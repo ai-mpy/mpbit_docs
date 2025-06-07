@@ -16,4 +16,4 @@
         sound_value = sound().read()
         oled.print('声音响度:'+str(sound_value))
 
-:download:`点击下载-学习活动3.mix <mix/学习活动3.mix>`
+:download:`点击下载-u1l3_学习活动3.mix <mix/u1l3_学习活动3.mix>`
