@@ -35,12 +35,18 @@ rst_epilog = """
 .. include:: /templates/replace.inc
 """
 
+# 修改输出目录配置
 html_theme = 'sphinx_rtd_theme'
 html_theme_path = ["."]
 html_favicon = "static/favicon.ico"
 html_static_path = ['static']
 html_css_files = ['custom.css']
 html_last_updated_fmt = "%d %b %Y"
+
+# 添加这一行，将输出直接放在 docs 根目录
+html_baseurl = 'https://ai-mpy.github.io/mpbit_docs/'
+html_extra_path = ['.nojekyll']  # 防止 GitHub Pages 忽略下划线文件
+
 html_theme_options = {
     'titles_only': True,
     'navigation_depth': 4

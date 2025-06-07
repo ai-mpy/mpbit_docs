@@ -6,7 +6,8 @@ PYTHON        = python3
 SPHINXOPTS    = -W --keep-going -j auto
 SPHINXBUILD   = sphinx-build
 PAPER         =
-BUILDDIR      = docs/$(MICROPY_PORT)
+BUILDDIR      = _build
+DOCSDIR       = docs
 CPYDIFFDIR    = ../tools
 CPYDIFF       = gen-cpydiff.py
 GENRSTDIR     = genrst
@@ -54,19 +55,15 @@ help:
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
 	@echo "  cpydiff    to generate the MicroPython differences from CPython"
 
-clean:
-	rm -rf $(BUILDDIR)/*
-	rm -f $(GENRSTDIR)/*
-
-cpydiff:
-	@echo "Generating MicroPython Differences."
-	rm -f $(GENRSTDIR)/*
-	cd $(CPYDIFFDIR) && $(PYTHON) $(CPYDIFF)
-
 html:
-	$(SPHINXBUILD) $(FORCE) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+	@echo "Creating .nojekyll file..."
+	@touch .nojekyll
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	@echo "Copying files to docs directory..."
+	@rm -rf $(DOCSDIR)/*
+	@cp -r $(BUILDDIR)/html/* $(DOCSDIR)/
+	@cp .nojekyll $(DOCSDIR)/
+	@echo "Build finished. The HTML pages are in $(DOCSDIR)."
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
@@ -189,3 +186,13 @@ pseudoxml:
 	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
+
+clean:
+	rm -rf $(BUILDDIR)/*
+	rm -rf $(DOCSDIR)/*
+	rm -f .nojekyll
+
+cpydiff:
+	@echo "Generating MicroPython Differences."
+	rm -f $(GENRSTDIR)/*
+	cd $(CPYDIFFDIR) && $(PYTHON) $(CPYDIFF)
